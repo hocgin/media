@@ -1,0 +1,82 @@
+@import "~@/mixin.less";
+
+.component {
+  position: relative;
+}
+
+.imgWrapper {
+  overflow: hidden;
+
+  .img {
+    width: 100%;
+    height: auto;
+    display: block;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+}
+
+.indicator {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  border-radius: 2px;
+  padding: 2px;
+  font-size: 80%;
+  color: #fff;
+  background: rgba(117, 117, 117, .65);
+}
+
+.user {
+  display: flex;
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  color: rgba(255, 255, 255, 0.8);
+  text-align: left;
+  border-radius: 32px 5px 5px 32px;
+  overflow: hidden;
+  align-items: center;
+
+  .avatar {
+    border: 2px solid #fff;
+  }
+
+  .meta {
+    font-size: .8em;
+    padding-left: 4px;
+    padding-right: 5px;
+    overflow: hidden;
+    z-index: -1;
+    color: #fff;
+
+    .username {
+      font-size: 1.2em;
+      font-weight: 500;
+    }
+
+    .more {
+      display: flex;
+      align-items: baseline;
+      font-weight: 300;
+      .camera {
+
+      }
+      .city {
+        font-size: 1.3em;
+      }
+    }
+  }
+
+
+  &:hover {
+    background-color: rgba(117, 117, 117, .65);
+
+    .meta {
+      z-index: 0;
+    }
+  }
+}
+
