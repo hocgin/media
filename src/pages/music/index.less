@@ -1,0 +1,35 @@
+@import "~@/mixin.less";
+
+.page {
+  max-width: 1000px;
+  width: 100%;
+  overflow-x: hidden;
+  margin-right: auto;
+  margin-left: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: left;
+}
+.title {
+  text-align: left;
+  font-size: 16px;
+}
+.fixedBox {
+  position: fixed;
+  top: 0;
+  z-index: 100;
+}
+.playerContainer {
+  width: 500px;
+  text-align: unset;
+  .mobile({
+    width: 100%;
+  })
+}
+.musics {
+  margin: 5px;
+  .mobile({
+    margin: 5px;
+  })
+}
