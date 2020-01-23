@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'dva';
 import styles from './index.less';
-import Image from '@/components/Image';
+import ImageCard from '@/components/ImageCard';
 import Img from 'react-image';
 
 @connect((...rest) => {
@@ -29,16 +29,16 @@ class index extends React.Component {
         {/*  BOX  */}
         <div className={styles.photos}>
           <div className={styles.photoColumn}>
-            {([1, 2, 3]).map(() => <Image wrapperClassName={styles.photoImage} src={that.getOneImage()}/>)}
+            {([1, 2, 3]).map(() => <ImageCard wrapperClassName={styles.photoImage} src={that.getOneImage()}/>)}
           </div>
           <div className={styles.photoColumn}>
-            {([1, 2, 3]).map(() => <Image wrapperClassName={styles.photoImage} src={that.getOneImage()}/>)}
+            {([1, 2, 3]).map(() => <ImageCard wrapperClassName={styles.photoImage} src={that.getOneImage()}/>)}
           </div>
           <div className={styles.photoColumn}>
-            {([1, 2, 3]).map(() => <Image wrapperClassName={styles.photoImage} src={that.getOneImage()}/>)}
+            {([1, 2, 3]).map(() => <ImageCard wrapperClassName={styles.photoImage} src={that.getOneImage()}/>)}
           </div>
           <div className={styles.photoColumn}>
-            {([1, 2, 3]).map(() => <Image wrapperClassName={styles.photoImage} src={that.getOneImage()}/>)}
+            {([1, 2, 3]).map(() => <ImageCard wrapperClassName={styles.photoImage} src={that.getOneImage()}/>)}
           </div>
         </div>
         {/*  BOX  */}

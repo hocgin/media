@@ -1,0 +1,41 @@
+@import "~@/mixin.less";
+
+.component {
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  width: 340px;
+}
+
+.image {
+  overflow: hidden;
+  height: 190px;
+  position: relative;
+
+  .totalTime {
+    right: 0;
+    bottom: 0;
+    margin: 4px;
+    padding: 2px 4px;
+    border-radius: 2px;
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.8);
+    position: absolute;
+  }
+}
+
+.title {
+  font-size: 1.2rem;
+  margin-bottom: 5px;
+}
+
+.meta {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+
+  .videoViewer {
+    font-size: .8rem;
+  }
+}
