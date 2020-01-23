@@ -22,6 +22,10 @@
     .primaryInner {
       padding-top: @margin;
       padding-right: @margin;
+      .mobile({
+        padding-top: 0;
+        padding-right: 0;
+      });
 
       .playerContainer {
         //height: 678px;
@@ -40,6 +44,9 @@
         margin-top: 10px;
         text-align: left;
         color: @fontColor;
+        .mobile({
+          padding: 0 5px;
+        });
 
         .title {
           word-break: break-word;
@@ -48,11 +55,13 @@
           line-height: 1.4rem;
           font-size: 1.2rem;
         }
+
         .meta {
           display: flex;
           flex-direction: row;
           justify-content: space-between;
           align-items: center;
+
           .videoViewer {
             color: @fontColor;
             text-align: right;

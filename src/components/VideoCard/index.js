@@ -13,7 +13,7 @@ class Index extends React.PureComponent {
           <Img
             unloader={this.renderUnloader()}
             loader={this.renderLoader()}
-            src="https://i.ytimg.com/vi/XIm0FikKALE/hqdefault.jpg?sqp=-oaymwEZCOADEI4CSFXyq4qpAwsIARUAAIhCGAFwAQ==&rs=AOn4CLBPnZ0lDa5xr3qh2JwNWPAaozn79Q"
+            src="https://cn-south-17-aplayer-46154810.oss.dogecdn.com/yourname.jpg"
             alt="图片"/>
           <span className={styles.totalTime}>4:34</span>
         </div>
