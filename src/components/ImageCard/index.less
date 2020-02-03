@@ -2,6 +2,27 @@
 
 .component {
   position: relative;
+
+  &:after {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    transition: all .3s ease;
+    box-shadow: inset 0 0 0 4px hsla(0, 0%, 40%, .2);
+  }
+
+  &:hover {
+    &:after {
+      box-shadow: inset 0 0 0 4px rgba(234, 184, 57, 0.85);
+    }
+    & .img {
+      transform: scale(1.1);
+    }
+  }
 }
 
 .imgWrapper {
@@ -11,9 +32,6 @@
     width: 100%;
     height: auto;
     display: block;
-    &:hover {
-      transform: scale(1.1);
-    }
   }
 }
 
@@ -62,9 +80,11 @@
       display: flex;
       align-items: baseline;
       font-weight: 300;
+
       .camera {
 
       }
+
       .city {
         font-size: 1.3em;
       }

@@ -22,13 +22,30 @@
     text-align: left;
     text-transform: uppercase;
     transition: 0.4s;
+    position: relative;
+    &:hover {
+      transform: scale(0.9);
+      &:after {
+        box-shadow: inset 0 0 0 2px rgba(234, 184, 57, 0.51);
+      }
+    }
+
+    &:after {
+      content: "";
+      display: block;
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      left: 0;
+      top: 0;
+      transition: all .3s ease;
+      box-shadow: inset 0 0 0 2px hsla(0, 0%, 40%, .4);
+    }
+
     .icon {
       opacity: .8;
       padding: 20px;
       font-size: 42px;
-    }
-    &:hover {
-      transform: scale(0.9);
     }
   }
 
