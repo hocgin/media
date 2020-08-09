@@ -1,6 +1,5 @@
 import React from 'react';
 import styles from './index.less';
-import 'dplayer/dist/DPlayer.min.css';
 import DPlayer from 'dplayer';
 import { Avatar, Divider } from 'antd';
 
