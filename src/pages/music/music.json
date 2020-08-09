@@ -6,8 +6,23 @@
     "artist": "作家",
     "type": "auto",
     "lrc": "https://cn-south-17-aplayer-46154810.oss.dogecdn.com/hikarunara.lrc",
-    "played": true,
     "desc": "描述文本"
+  },
+  {
+    "cover": "https://cn-south-17-aplayer-46154810.oss.dogecdn.com/yourname.jpg",
+    "url": "https://cn-south-17-aplayer-46154810.oss.dogecdn.com/yourname.mp3",
+    "name": "音乐名称2",
+    "artist": "作家",
+    "type": "auto",
+    "lrc": "https://cn-south-17-aplayer-46154810.oss.dogecdn.com/hikarunara.lrc"
+  },
+  {
+    "cover": "https://cn-south-17-aplayer-46154810.oss.dogecdn.com/yourname.jpg",
+    "url": "https://cn-south-17-aplayer-46154810.oss.dogecdn.com/yourname.mp3",
+    "name": "音乐名称1",
+    "artist": "作家",
+    "type": "auto",
+    "lrc": "https://cn-south-17-aplayer-46154810.oss.dogecdn.com/hikarunara.lrc"
   },
   {
     "cover": "https://cn-south-17-aplayer-46154810.oss.dogecdn.com/yourname.jpg",

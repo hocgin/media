@@ -11,14 +11,16 @@ class Index extends React.PureComponent {
   render() {
     let {played, cover, name, artist, onClickButton, desc, wrapperClassName, wrapperStyle} = this.props;
     return (
-      <div className={classnames(styles.component, wrapperClassName)} style={wrapperStyle}>
+      <div className={classnames(styles.component, wrapperClassName)}
+           style={wrapperStyle}
+           onClick={onClickButton}>
         <div className={styles.logo}>
           <Img className={classnames(styles.image, {
             [styles.played]: played
           })} unloader={this.renderUnloader()}
                loader={this.renderLoader()}
                src={cover}/>
-          <div className={styles.btn} onClick={onClickButton}>
+          <div className={styles.btn}>
             {this.renderBtn(played)}
           </div>
         </div>

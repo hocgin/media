@@ -31,8 +31,10 @@ class index extends React.Component {
     });
 
     window.addEventListener('scroll', this.onPageScroll);
-    ap.on('playing', this.onPlaying);
     this.loadMusic();
+    ap.on('playing', this.onPlaying);
+    ap.on('pause', this.onPause);
+    ap.on('listswitch', this.onListswitch);
   }
 
   componentWillUnmount() {
@@ -61,7 +63,7 @@ class index extends React.Component {
               </Row>
               <Row gutter={[{xs: 5, sm: 16}, {xs: 5, sm: 16}]}>
                 {(audio || []).map(({played, cover, name, desc}, index) => (
-                  <Col xs={12} sm={8}>
+                  <Col xs={24} sm={8}>
                     <MusicCard played={played} cover={cover} name={name} desc={desc}
                                onClickButton={this.onClickMusic.bind(this, index)}
                                wrapperStyle={{backgroundColor: Colors.getRgbaColor(index)}}/>
@@ -75,26 +77,14 @@ class index extends React.Component {
     );
   }
 
-  onClickMusic = (key) => {
-    this.setState(({audio = []}) => {
-      let oldPlayed = audio[key].played;
-      audio.map(item => {
-        item.played = false;
-        return item;
-      });
-      audio[key].played = !oldPlayed;
-
-      if (audio[key].played) {
-        ap.list.switch(key);
-        ap.play();
-      } else {
-        ap.pause();
-      }
-
-      return {
-        audio: [...audio]
-      }
-    })
+  onClickMusic = (index) => {
+    let {audio = []} = this.state;
+    if (audio[index].selected) {
+      ap.toggle();
+    } else {
+      ap.list.switch(index);
+      ap.play();
+    }
   };
 
   onPageScroll = (event) => {
@@ -119,11 +109,49 @@ class index extends React.Component {
     }
   };
 
+  onListswitch = ({index}) => {
+    this.setState(({audio = []}) => {
+      audio.map((item, i) => {
+        item.selected = (i === index);
+        return item;
+      });
+
+      return {
+        audio: [...audio]
+      }
+    });
+  };
+
   onPlaying = () => {
-    console.log('播放');
+    this.setState(({audio = []}) => {
+      audio.map(item => {
+        item.played = !!item.selected;
+        return item;
+      });
+
+      return {
+        audio: [...audio]
+      }
+    });
+  };
+
+  onPause = () => {
+    this.setState(({audio = []}) => {
+      audio.map(item => {
+        if (item.selected) {
+          item.played = false;
+        }
+        return item;
+      });
+
+      return {
+        audio: [...audio]
+      }
+    });
   };
 
   loadMusic = () => {
+    musicList[0].selected = true;
     this.setState({
       audio: [...musicList]
     })
