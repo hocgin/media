@@ -14,7 +14,7 @@ let ap;
 class index extends React.Component {
   state = {
     // 播放器Y轴位置
-    playerMaxY: 10,
+    playerMaxY: 100,
     fixedPlayer: false,
   };
 
@@ -85,7 +85,7 @@ class index extends React.Component {
               </Row>
               <Row gutter={[{ xs: 5, sm: 16 }, { xs: 5, sm: 16 }]}>
                 {[1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 2].map((_, index) => (
-                  <Col xs={12} sm={6}>
+                  <Col xs={12} sm={8}>
                     <MusicCard played={true} wrapperStyle={{backgroundColor: Colors.getRgbaColor(index)}}/>
                   </Col>
                 ))}
