@@ -26,6 +26,19 @@
   .image {
     width: auto;
     height: 100%;
+
+    &.played {
+      animation: rotate 3s linear 0s infinite;
+      @keyframes rotate {
+        0% {
+          transform: rotateZ(0deg);
+        }
+        100% {
+          transform: rotateZ(360deg);
+        }
+      }
+    }
+
   }
 
   .btn {
@@ -48,9 +61,15 @@
     font-size: 16px;
   }
 
+  .desc {
+    color: rgba(255, 255, 255, .7);
+    font-size: .8em;
+  }
+
   .viewer {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    font-size: .8em;
   }
 }

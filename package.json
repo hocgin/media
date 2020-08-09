@@ -13,9 +13,10 @@
     "classnames": "^2.2.6",
     "dplayer": "^1.25.0",
     "dva": "^2.6.0-beta.6",
-    "hash.js": "latest",
-    "moment": "latest",
-    "query-string": "latest",
+    "hash.js": "^1.1.7",
+    "moment": "^2.24.0",
+    "query-string": "^6.11.1",
+    "prop-types": "^15.7.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-image": "^2.2.2"

@@ -1,26 +1,30 @@
 import React from 'react';
 import styles from './index.less';
 import Img from 'react-image';
-import { Icon } from 'antd';
+import PropTypes from 'prop-types';
+import {Icon} from 'antd';
 import classnames from 'classnames';
 
 class Index extends React.PureComponent {
+  canvasRef = React.createRef();
 
   render() {
-    let { played = false, wrapperClassName, wrapperStyle } = this.props;
+    let {played, cover, name, artist, onClickButton, desc, wrapperClassName, wrapperStyle} = this.props;
     return (
       <div className={classnames(styles.component, wrapperClassName)} style={wrapperStyle}>
         <div className={styles.logo}>
-          <Img className={styles.image}
-               unloader={this.renderUnloader()}
+          <Img className={classnames(styles.image, {
+            [styles.played]: played
+          })} unloader={this.renderUnloader()}
                loader={this.renderLoader()}
-               src={'https://cn-south-17-aplayer-46154810.oss.dogecdn.com/yourname.jpg'}/>
-          <div className={styles.btn}>
+               src={cover}/>
+          <div className={styles.btn} onClick={onClickButton}>
             {this.renderBtn(played)}
           </div>
         </div>
         <div className={styles.meta}>
-          <h1 className={styles.title}>标题</h1>
+          <h1 className={styles.title}>{`${name} - ${artist}`}</h1>
+          <div className={styles.desc}>{desc}</div>
           <div className={styles.viewer}>
             <span>@hocgin</span><span>10万+</span>
           </div>
@@ -38,9 +42,7 @@ class Index extends React.PureComponent {
       height: 60,
       width: '100%',
       backgroundColor: '#DEE1E5',
-    }}>
-      加载失败
-    </div>);
+    }}/>);
   };
 
   renderLoader = () => {
@@ -48,8 +50,23 @@ class Index extends React.PureComponent {
       height: 60,
       width: '100%',
       backgroundColor: '#DEE1E5',
-    }}>
-    </div>);
+    }}/>);
+  };
+
+  static propTypes = {
+    played: PropTypes.bool,
+    cover: PropTypes.string,
+    desc: PropTypes.string,
+    name: PropTypes.string,
+    onClickButton: PropTypes.func,
+  };
+  static defaultProps = {
+    played: false,
+    cover: null,
+    name: '未知音频',
+    artist: '未知作家',
+    onClickButton: () => {
+    }
   };
 }
 

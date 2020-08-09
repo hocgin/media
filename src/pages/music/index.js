@@ -1,38 +1,25 @@
 import React from 'react';
 import styles from './index.less';
 import MusicCard from '@/components/MusicCard';
-import { Col, Row, Typography } from 'antd';
+import {Col, Row, Typography} from 'antd';
 import 'APlayer/dist/APlayer.min.css';
 import APlayer from 'APlayer';
 import classnames from 'classnames';
 import Colors from '@/utils/colors';
+import musicList from '@/pages/music/music.json'
 
-const { Title } = Typography;
+const {Title} = Typography;
 
 let ap;
+let analyser;
 
 class index extends React.Component {
   state = {
     // 播放器Y轴位置
     playerMaxY: 100,
     fixedPlayer: false,
+    audio: []
   };
-
-  columns = [{
-    title: '名次',
-    dataIndex: 'index',
-  }, {
-    title: '歌曲',
-    dataIndex: 'name',
-  }, {
-    title: '歌手',
-    dataIndex: 'artist',
-  }];
-  data = [{
-    'index': 1,
-    'artist': '作家',
-    'name': '歌曲',
-  }];
 
   componentDidMount() {
     ap = new APlayer({
@@ -40,23 +27,12 @@ class index extends React.Component {
       listMaxHeight: 90,
       lrcType: 3,
       listFolded: true,
-      audio: [{
-        cover: 'https://cn-south-17-aplayer-46154810.oss.dogecdn.com/yourname.jpg',
-        url: 'https://cn-south-17-aplayer-46154810.oss.dogecdn.com/yourname.mp3',
-        name: '音乐名称',
-        artist: '作家',
-        type: 'auto',
-        lrc: 'https://cn-south-17-aplayer-46154810.oss.dogecdn.com/hikarunara.lrc',
-      }, {
-        cover: 'https://cn-south-17-aplayer-46154810.oss.dogecdn.com/yourname.jpg',
-        url: 'https://cn-south-17-aplayer-46154810.oss.dogecdn.com/yourname.mp3',
-        name: '音乐名称',
-        artist: '作家',
-        type: 'auto',
-        lrc: 'https://cn-south-17-aplayer-46154810.oss.dogecdn.com/hikarunara.lrc',
-      }],
+      audio: [],
     });
+
     window.addEventListener('scroll', this.onPageScroll);
+    ap.on('playing', this.onPlaying);
+    this.loadMusic();
   }
 
   componentWillUnmount() {
@@ -67,7 +43,7 @@ class index extends React.Component {
 
   render() {
     let {} = this.props;
-    let { fixedPlayer } = this.state;
+    let {fixedPlayer, audio = []} = this.state;
     return (
       <div className={styles.page}>
         <div className={classnames({
@@ -78,15 +54,17 @@ class index extends React.Component {
           </div>
         </div>
         <div className={classnames(styles.musics)}>
-          {[4, 3, 4, 2].map((_, index) => {
+          {[1].map((_, index) => {
             return (<>
               <Row gutter={[16, 16]}>
-                <Title level={3} style={{ margin: 8 }}>h2. Ant Design</Title>
+                <Title level={3} style={{margin: 8}}>h2. Ant Design</Title>
               </Row>
-              <Row gutter={[{ xs: 5, sm: 16 }, { xs: 5, sm: 16 }]}>
-                {[1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 2].map((_, index) => (
+              <Row gutter={[{xs: 5, sm: 16}, {xs: 5, sm: 16}]}>
+                {(audio || []).map(({played, cover, name, desc}, index) => (
                   <Col xs={12} sm={8}>
-                    <MusicCard played={true} wrapperStyle={{backgroundColor: Colors.getRgbaColor(index)}}/>
+                    <MusicCard played={played} cover={cover} name={name} desc={desc}
+                               onClickButton={this.onClickMusic.bind(this, index)}
+                               wrapperStyle={{backgroundColor: Colors.getRgbaColor(index)}}/>
                   </Col>
                 ))}
               </Row>
@@ -97,14 +75,40 @@ class index extends React.Component {
     );
   }
 
+  onClickMusic = (key) => {
+    this.setState(({audio = []}) => {
+      let oldPlayed = audio[key].played;
+      audio.map(item => {
+        item.played = false;
+        return item;
+      });
+      audio[key].played = !oldPlayed;
+
+      if (audio[key].played) {
+        ap.list.switch(key);
+        ap.play();
+      } else {
+        ap.pause();
+      }
+
+      return {
+        audio: [...audio]
+      }
+    })
+  };
+
   onPageScroll = (event) => {
-    let { playerMaxY } = this.state;
+    let {playerMaxY} = this.state;
     // 滚动的高度
-    const scrollTop = (event.srcElement ? event.srcElement.documentElement.scrollTop : false) || window.pageYOffset || (event.srcElement ? event.srcElement.body.scrollTop : 0);
+    const scrollTop = (event.srcElement ? event.srcElement.documentElement.scrollTop : false)
+      || window.pageYOffset
+      || (event.srcElement ? event.srcElement.body.scrollTop : 0);
     // 视窗高度
-    const clientHeight = (event.srcElement && event.srcElement.documentElement.clientHeight) || document.body.clientHeight;
+    const clientHeight = (event.srcElement && event.srcElement.documentElement.clientHeight)
+      || document.body.clientHeight;
     // 页面高度
-    const scrollHeight = (event.srcElement && event.srcElement.documentElement.scrollHeight) || document.body.scrollHeight;
+    const scrollHeight = (event.srcElement && event.srcElement.documentElement.scrollHeight)
+      || document.body.scrollHeight;
     // 距离页面底部的高度
     const height = scrollHeight - scrollTop - clientHeight;
     // 判断距离页面底部的高度
@@ -113,6 +117,17 @@ class index extends React.Component {
     } else {
       this.setFixedPlayer(false);
     }
+  };
+
+  onPlaying = () => {
+    console.log('播放');
+  };
+
+  loadMusic = () => {
+    this.setState({
+      audio: [...musicList]
+    })
+    ap.list.add([...musicList]);
   };
 
   setFixedPlayer = (bool = false) => {
