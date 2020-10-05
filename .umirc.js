@@ -1,10 +1,10 @@
 // ref: https://umijs.org/config/
 export default {
   treeShaking: true,
-  // exportStatic: {
-  //   htmlSuffix: true,
-  //   dynamicRoot: true,
-  // },
+  exportStatic: {
+    htmlSuffix: true,
+    dynamicRoot: true,
+  },
   routes: [{
     path: '/',
     component: '../layouts/index',
@@ -12,7 +12,7 @@ export default {
       {path: '/', component: '../pages/index'},
       {path: '/music', component: '../pages/music/index'},
       {path: '/video', component: '../pages/video/index'},
-      {path: '/video/:id', component: '../pages/video/$id/index'},
+      // {path: '/video/:id', component: '../pages/video/$id/index'},
       {path: '/photo', component: '../pages/photo/index'}
     ]
   }],
