@@ -2,7 +2,6 @@
 export default {
   treeShaking: true,
   exportStatic: {
-    htmlSuffix: true,
     dynamicRoot: true,
   },
   routes: [{
