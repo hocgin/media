@@ -1,20 +1,21 @@
-
 // ref: https://umijs.org/config/
 export default {
   treeShaking: true,
   exportStatic: {
-    htmlSuffix: true,
-    dynamicRoot: true,
+    // htmlSuffix: true,
+    // dynamicRoot: true,
   },
-  // routes: [
-  //   {
-  //     path: '/',
-  //     component: '../layouts/index',
-  //     routes: [
-  //       { path: '/', component: '../pages/index' }
-  //     ]
-  //   }
-  // ],
+  routes: [{
+    path: '/',
+    component: '../layouts/index',
+    routes: [
+      {path: '/', component: '../pages/index'},
+      {path: '/music', component: '../pages/music/index'},
+      {path: '/video', component: '../pages/video/index'},
+      {path: '/video/:id', component: '../pages/video/$id/index'},
+      {path: '/photo', component: '../pages/photo/index'}
+    ]
+  }],
   plugins: [
     // ref: https://umijs.org/plugin/umi-plugin-react.html
     ['umi-plugin-react', {
