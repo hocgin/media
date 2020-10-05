@@ -29,9 +29,9 @@ class index extends React.Component {
                 <Title level={3} style={{ margin: 8 }}>h2. Ant Design</Title>
               </Row>
               <Row gutter={[{ xs: 5, sm: 16 }, { xs: 10, sm: 32 }]}>
-                {[1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 2].map((item, index) => (
+                {[1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 2].map((id, index) => (
                   <Col xs={24} sm={6}>
-                    <a href={`/video/${item}`} style={{ color: 'unset' }}>
+                    <a href={`/video/detail?vid=${id}`} style={{ color: 'unset' }}>
                       <VideoCard wrapperClassName={styles.video}/>
                     </a>
                   </Col>
