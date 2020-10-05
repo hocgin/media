@@ -2,8 +2,7 @@ import React from 'react';
 import styles from './index.less';
 import MusicCard from '@/components/MusicCard';
 import {Col, Row, Typography} from 'antd';
-import 'APlayer/dist/APlayer.min.css';
-import APlayer from 'APlayer';
+import APlayer from 'aplayer';
 import classnames from 'classnames';
 import Colors from '@/utils/colors';
 import musicList from '@/pages/music/music.json'
