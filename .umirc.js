@@ -2,6 +2,10 @@
 // ref: https://umijs.org/config/
 export default {
   treeShaking: true,
+  exportStatic: {
+    htmlSuffix: true,
+    dynamicRoot: true,
+  },
   // routes: [
   //   {
   //     path: '/',
@@ -19,7 +23,7 @@ export default {
       dynamicImport: false,
       title: 'media',
       dll: true,
-      
+
       routes: {
         exclude: [
           /models\//,
@@ -31,4 +35,5 @@ export default {
       },
     }],
   ],
+  copy: ['CNAME'],
 }
