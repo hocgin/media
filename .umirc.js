@@ -1,8 +1,8 @@
 // ref: https://umijs.org/config/
 export default {
-  exportStatic: {
-    dynamicRoot: true,
-  },
+  // exportStatic: {
+  //   dynamicRoot: true,
+  // },
   routes: [{
     path: '/',
     component: '../layouts/index',
