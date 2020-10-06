@@ -32,7 +32,7 @@ class index extends React.Component {
               <Row gutter={[{xs: 5, sm: 16}, {xs: 10, sm: 32}]}>
                 {[1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 2].map((id, index) => (
                   <Col xs={24} sm={6}>
-                    <Link to={`/video/detail?vid=${id}`} style={{color: 'unset'}}>
+                    <Link to={`/video/${id}`} style={{color: 'unset'}}>
                       <VideoCard wrapperClassName={styles.video}/>
                     </Link>
                   </Col>

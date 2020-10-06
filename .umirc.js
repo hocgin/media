@@ -8,7 +8,7 @@ export default {
       {path: '/', component: '../pages/index'},
       {path: '/music', component: '../pages/music/index'},
       {path: '/video', component: '../pages/video/index'},
-      {path: '/video/detail', component: '../pages/video/detail/index'},
+      {path: '/video/:id', component: '../pages/video/$id/index'},
       {path: '/photo', component: '../pages/photo/index'}
     ]
   }],
