@@ -1,6 +1,5 @@
 // ref: https://umijs.org/config/
 export default {
-  history: { type: 'hash' },
   routes: [{
     path: '/',
     component: '../layouts/index',
