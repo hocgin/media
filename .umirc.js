@@ -1,5 +1,6 @@
 // ref: https://umijs.org/config/
 export default {
+  exportStatic: {},
   routes: [{
     path: '/',
     component: '../layouts/index',
