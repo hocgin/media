@@ -36,10 +36,10 @@ export default function () {
             </Link>
           </Col>
           <Col sm={8}>
-            <Link to={'https://hocg.in'} className={classnames(styles.item, styles.item5)}>
+            <a href={'https://hocg.in'} className={classnames(styles.item, styles.item5)}>
               <Icon type="environment" className={styles.icon}/>
               <span>Me</span>
-            </Link>
+            </a>
           </Col>
         </Row>
       </div>
