@@ -1,7 +1,5 @@
 // ref: https://umijs.org/config/
 export default {
-  history: { type: 'hash' },
-  dynamicImport: {},
   routes: [{
     path: '/',
     component: '../layouts/index',

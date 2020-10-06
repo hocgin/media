@@ -1,23 +1,24 @@
 import React from 'react';
 import styles from './index.less';
+import {Link} from 'umi';
 import classnames from 'classnames';
-import { Avatar, Icon } from 'antd';
+import {Avatar, Icon} from 'antd';
 import Img from 'react-image';
 
 class Index extends React.PureComponent {
   render() {
-    let { src, wrapperClassName } = this.props;
+    let {src, wrapperClassName} = this.props;
     let prefix = this.getImagePrefix(src);
     return (
       <div className={classnames(styles.component, wrapperClassName)}>
         <article className={styles.imgWrapper}>
-          <a href="#">
+          <Link to="/#">
             <Img className={styles.img}
                  src={src}
                  unloader={this.renderUnloader()}
                  loader={this.renderLoader()}
                  alt="图片"/>
-          </a>
+          </Link>
         </article>
         {prefix !== '' && <div className={styles.indicator}>{prefix}</div>}
         <div className={styles.user}>
@@ -28,7 +29,7 @@ class Index extends React.PureComponent {
             <div className={styles.username}>hocgin</div>
             <div className={styles.more}>
               <span className={styles.camera}>
-                <Icon type="camera" style={{ marginRight: 2 }}/> Apple iPhone XR/
+                <Icon type="camera" style={{marginRight: 2}}/> Apple iPhone XR/
               </span>
               <span className={styles.city}>厦门</span>
             </div>
